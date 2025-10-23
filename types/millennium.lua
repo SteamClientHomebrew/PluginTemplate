@@ -14,7 +14,7 @@ local millennium = {}
 ---@field name string Display name of the plugin
 ---@field logs PluginLogEntry[] Array of log entries for this plugin
 
----Called one time after your plugin has finished bootstrapping. 
+---Called one time after your plugin has finished bootstrapping.
 ---Used to let Millennium know what plugins crashed/loaded etc.
 ---@return boolean success True if the ready message was sent successfully
 function millennium.ready() end
@@ -41,7 +41,7 @@ function millennium.remove_browser_module(moduleId) end
 ---@return any
 function millennium.get_user_settings() end
 
----Set user settings key (not implemented yet, will likely be removed)  
+---Set user settings key (not implemented yet, will likely be removed)
 ---@deprecated This function is not implemented and may be removed
 ---@return any
 function millennium.set_user_settings_key() end
@@ -81,5 +81,17 @@ function millennium.is_plugin_enabled(pluginName) end
 ---Get the build date of Millennium (Use with caution, this is an internal function and may change without notice)
 ---@return string buildDate Build timestamp string
 function millennium.__internal_get_build_date() end
+
+--- Compare two semantic versions against one another. Very useful when you need to conditionally add features depending on the version of Millennium.
+---
+--- Example: If there is a API function "new_call" introduced in Millennium 2.30.0 and up, you can check if the function is available on the users installation with
+---```lua
+--- millennium.cmp_version(millennium.version(), "2.30.0") >= 0
+--- ```
+---
+---@param version1 string The first version to compare
+---@param version2 string version2
+---@return number status -1 if v1 < v2, 0 if v1 == v2, 1 if v1 > v2, -2 if there was an error parsing or comparing versions.
+function millennium.cmp_version(version1, version2) end
 
 return millennium

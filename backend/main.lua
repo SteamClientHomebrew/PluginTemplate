@@ -10,6 +10,8 @@ end
 
 local function on_load()
     print("Example plugin loaded")
+    logger:info("Comparing millennium version: " .. millennium.cmp_version(millennium.version(), "2.29.3"))
+
     logger:info("Example plugin loaded with Millennium version " .. millennium.version())
     millennium.ready()
 end
