@@ -1,5 +1,5 @@
 > [!CAUTION]
-> This plugin example does not work on the stable version of Millennium. (Written on October 26, 2025 — by the time you’re reading this, stable support > might have been released. If we forgot to update this note, please let us know.)
+> This plugin example does not work on the stable version of Millennium. (Written on October 26, 2025 — by the time you’re reading this, stable support might have been released. If we forgot to update this note, please let us know.)
 >
 > Millennium is currently transitioning from Python plugins to Lua plugins. Lua plugin support is available only in the alpha and beta channels — you can find these builds on Millennium’s releases page.
 >
