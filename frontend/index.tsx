@@ -34,6 +34,16 @@ const SettingsContent = () => {
 	);
 };
 
+function hookedSettingsIcon() {
+	return {
+		SteamButton: (): any => {
+			return <IconsModule.Caution height={'20px'} />;
+		},
+	};
+}
+
+Millennium.exposeObj({ hookedSettingsIcon });
+
 export default definePlugin(() => {
 	// Call the backend method
 	backendMethod({
