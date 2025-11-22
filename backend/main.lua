@@ -59,7 +59,7 @@ return {
                     -- #{{self}} is a macro that denotes your plugins frontend instance.
                     -- hookedSettingsIcon() will be called on your frontend now.
                     -- Make sure to "Millennium.exposeObj({ hookedSettingsIcon });" first, otherwise the function will be private by default.
-                    replace = [[createElement(#{{self}}.hookedSettingsIcon().SteamButton]],
+                    replace = [[createElement(#{{self}}?.hookedSettingsIcon?.().SteamButton]], -- ALWAYS null safe you calls. The frontend may not be ready when this code runs.
                 }
                 -- this is a list, you can add more elements
             }
