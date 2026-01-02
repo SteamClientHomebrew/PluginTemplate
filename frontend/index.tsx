@@ -19,6 +19,8 @@ function windowCreated(context: any) {
 
 // Declare a function that exists on the backend
 const backendMethod = callable<[{ message: string; status: boolean; count: number }], boolean>('test_frontend_message_callback');
+// Declare a function that exists on the webkit
+// const webkitMethod = callable<[{ message: string; status: boolean; count: number }], string>('webkit:someWebkitMethod');
 
 const SettingsContent = () => {
 	return (
@@ -45,7 +47,7 @@ function hookedSettingsIcon() {
 Millennium.exposeObj({ hookedSettingsIcon });
 
 export default definePlugin(() => {
-	// Call the backend method
+	console.log('Calling backendMethod from frontend...');
 	backendMethod({
 		message: 'Hello World From Frontend!',
 		status: true,
@@ -53,6 +55,20 @@ export default definePlugin(() => {
 	}).then((message: any) => {
 		console.log('Result from backendMethod:', message);
 	});
+
+	// /** Give the steam browser some time to load */
+	// setTimeout(() => {
+	// 	const startTime = performance.now();
+	// 	webkitMethod({
+	// 		message: 'Hello from Frontend to Webkit!',
+	// 		status: false,
+	// 		count: 42,
+	// 	}).then((response: any) => {
+	// 		const endTime = performance.now();
+	// 		console.log('Response from webkitMethod:', response);
+	// 		console.log(`webkitMethod took ${endTime - startTime}ms`);
+	// 	});
+	// }, 10000);
 
 	Millennium.AddWindowCreateHook(windowCreated);
 
