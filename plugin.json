@@ -4,5 +4,6 @@
 	"name": "__plugin__",
 	"common_name": "Plugin Example",
 	"description": "A template plugin for Millennium.",
-	"backendType": "lua"
+	"backendType": "lua",
+	"webkitApiVersion": "2.0.0"
 }

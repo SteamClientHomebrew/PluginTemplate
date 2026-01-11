@@ -1,0 +1,2 @@
+overrides:
+  '@steambrew/ttc': link:../Transpiler

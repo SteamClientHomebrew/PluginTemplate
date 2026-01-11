@@ -2,7 +2,7 @@ import { Millennium, IconsModule, definePlugin, Field, DialogButton, callable } 
 
 class classname {
 	static method(country: string, age: number) {
-		console.log(`age: ${age}, country: ${country}`);
+		console.log(`country: ${country}, age: ${age}`);
 		return 'method called';
 	}
 }

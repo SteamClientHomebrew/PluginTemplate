@@ -21,7 +21,7 @@
 	"dependencies": {
 		"@steambrew/api": "^5.5.3",
 		"@steambrew/client": "^5.5.3",
-		"@steambrew/ttc": "^2.7.3",
-		"@steambrew/webkit": "^5.5.3"
+		"@steambrew/ttc": "link:C:/Users/shdw/Development/Transpiler",
+		"@steambrew/webkit": "link:C:/Users/shdw/Development/Millennium/src/sdk/packages/browser"
 	}
 }

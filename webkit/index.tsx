@@ -1,13 +1,7 @@
-import { Millennium, callable } from '@steambrew/webkit';
+import { callable } from '@steambrew/webkit';
 
-const receiveFrontendMethod = callable<[{ message: string; status: boolean; count: number }], boolean>('Backend.receive_frontend_message');
-
-function someWebkitMethod(message: string, status: boolean, count: number) {
-	console.log(`Message: ${message}, Status: ${status}, Count: ${count}`);
-	return 'method called from webkit';
-}
-
-Millennium.exposeObj({ someWebkitMethod });
+const receiveFrontendMethod = callable<[{ message: string; status: boolean; count: number }], boolean>('test_frontend_message_callback');
+const frontendMethod = callable<[{ country: string; age: number }], string>('frontend:classname.method');
 
 export default async function WebkitMain() {
 	const success = await receiveFrontendMethod({
@@ -15,6 +9,11 @@ export default async function WebkitMain() {
 		status: true,
 		count: 69,
 	});
+	console.log('Result from receiveFrontendMethod:', success);
 
-	console.log('Result from receive_frontend_message:', success);
+	const result = await frontendMethod({
+		country: 'USA',
+		age: 25,
+	});
+	console.log('Result from frontendMethod:', result);
 }
