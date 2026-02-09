@@ -1,0 +1,29 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Build Plugin (Development)",
+			"detail": "Build the plugin in development mode",
+			"type": "shell",
+			"group": "build",
+			"command": "pnpm run dev",
+			"presentation": {
+				"echo": false,
+				"clear": true
+			},
+			"problemMatcher": []
+		},
+		{
+			"label": "Build Plugin (Production)",
+			"detail": "Build the plugin in production mode",
+			"type": "shell",
+			"group": "build",
+			"command": "pnpm run build",
+			"presentation": {
+				"echo": false,
+				"clear": true
+			},
+			"problemMatcher": []
+		}
+	]
+}
