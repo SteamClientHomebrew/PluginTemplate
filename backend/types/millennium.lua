@@ -102,10 +102,6 @@ function millennium.change_plugin_status(pluginName) end
 ---@return boolean enabled True if the plugin is enabled
 function millennium.is_plugin_enabled(pluginName) end
 
----Get the build date of Millennium (Use with caution, this is an internal function and may change without notice)
----@return string buildDate Build timestamp string
-function millennium.__internal_get_build_date() end
-
 --- Compare two semantic versions against one another. Very useful when you need to conditionally add features depending on the version of Millennium.
 ---
 --- Example: If there is a API function "new_call" introduced in Millennium 2.30.0 and up, you can check if the function is available on the users installation with
