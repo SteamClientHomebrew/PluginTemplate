@@ -1,4 +1,4 @@
-import { Millennium, IconsModule, definePlugin, Field, DialogButton, callable } from '@steambrew/client';
+import { Millennium, IconsModule, definePlugin, Field, DialogButton, callable, usePluginConfig } from '@steambrew/client';
 
 class classname {
 	static method(country: string, age: number) {
@@ -23,16 +23,32 @@ const backendMethod = callable<[{ message: string; status: boolean; count: numbe
 // const webkitMethod = callable<[{ message: string; status: boolean; count: number }], string>('webkit:someWebkitMethod');
 
 const SettingsContent = () => {
+	// usePluginConfig subscribes to live config changes from both frontend and backend.
+	// When the Lua backend calls millennium.config.set("greeting", ...), this component re-renders automatically.
+	const [greeting, setGreeting] = usePluginConfig<string>('greeting');
+
 	return (
-		<Field label="Plugin Settings" description="This is a description of the plugin settings." icon={<IconsModule.Settings />} bottomSeparator="standard" focusable>
-			<DialogButton
-				onClick={() => {
-					console.log('Button clicked!');
-				}}
-			>
-				Click Me
-			</DialogButton>
-		</Field>
+		<>
+			<Field label="Greeting" description={greeting ?? 'Loading...'} icon={<IconsModule.Settings />} bottomSeparator="standard" focusable>
+				<DialogButton
+					onClick={() => {
+						const next = greeting === 'Hello from Lua!' ? 'Hello from Frontend!' : 'Hello from Lua!';
+						setGreeting(next);
+					}}
+				>
+					Toggle Greeting
+				</DialogButton>
+			</Field>
+			<Field label="Plugin Settings" description="This is a description of the plugin settings." icon={<IconsModule.Settings />} bottomSeparator="standard" focusable>
+				<DialogButton
+					onClick={() => {
+						console.log('Button clicked!');
+					}}
+				>
+					Click Me
+				</DialogButton>
+			</Field>
+		</>
 	);
 };
 

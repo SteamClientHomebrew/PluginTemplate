@@ -36,15 +36,39 @@ function millennium.add_browser_js(moduleItem, regexSelector) end
 ---@return boolean success True if module was successfully removed
 function millennium.remove_browser_module(moduleId) end
 
----Get user settings (not implemented yet, will likely be removed)
----@deprecated This function is not implemented and may be removed
----@return any
-function millennium.get_user_settings() end
+---Plugin configuration sub-module (stored in config.json under plugins.<name>.config)
+---@class millennium.config
+millennium.config = {}
 
----Set user settings key (not implemented yet, will likely be removed)
----@deprecated This function is not implemented and may be removed
----@return any
-function millennium.set_user_settings_key() end
+---Get a config value by key
+---@param key string The config key to retrieve
+---@return any value The stored value (string, number, boolean, table, or nil if not set)
+---@return string|nil error Error message if the call failed
+function millennium.config.get(key) end
+
+---Set a config value by key. The change is persisted to disk and pushed to the frontend automatically.
+---@param key string The config key to set
+---@param value any The value to store (string, number, boolean, or table)
+---@return boolean success True if the value was set successfully
+---@return string|nil error Error message if the call failed
+function millennium.config.set(key, value) end
+
+---Delete a config key. The deletion is persisted and pushed to the frontend automatically.
+---@param key string The config key to delete
+---@return boolean success True if the key was deleted successfully
+---@return string|nil error Error message if the call failed
+function millennium.config.delete(key) end
+
+---Get all config values for this plugin
+---@return table config A table of all key-value pairs, or empty table if none set
+---@return string|nil error Error message if the call failed
+function millennium.config.get_all() end
+
+---Register a callback for config changes (from frontend, MEP, or other sources).
+---@param key_or_callback string|function If a string, only changes to this key trigger the callback. If a function, all changes trigger it.
+---@param callback? function The callback function receiving (key, value). Required when first arg is a key string.
+---@return function unsubscribe Call this to stop listening
+function millennium.config.on_change(key_or_callback, callback) end
 
 ---Get the version of Millennium in semantic versioning format
 ---@return string version Millennium version string (e.g., "1.0.0")

@@ -5,13 +5,34 @@ function test_frontend_message_callback(message, status, count)
     logger:info("test_frontend_message_callback called")
     logger:info("Received args: " .. table.concat({message, tostring(status), tostring(count)}, ", "))
 
-    return "Response from backend"
+    return true
 end
 
 local function on_load()
-    logger:info("Comparing millennium version: " .. millennium.cmp_version(millennium.version(), "2.29.3"))
+    logger:info("Comparing millennium version: " .. millennium.version())
+
+    -- We are running a Millennium version > 2.29.3
+    local target_version = "2.29.3"
+    if millennium.cmp_version(millennium.version(), target_version) == 1 then
+        logger:info("Running Millennium > " .. target_version)
+    end
 
     logger:info("Example plugin loaded with Millennium version " .. millennium.version())
+
+    -- Set a default greeting if one doesn't exist yet
+    local greeting = millennium.config.get("greeting")
+    if greeting == nil then
+        millennium.config.set("greeting", "Hello from Lua!")
+        logger:info("Set default greeting")
+    else
+        logger:info("Current greeting: " .. tostring(greeting))
+    end
+
+    -- Listen for config changes (from frontend, MEP, or anywhere)
+    millennium.config.on_change(function(key, value)
+        logger:info("Config changed: " .. key .. " = " .. tostring(value))
+    end)
+
     millennium.ready()
 end
 
