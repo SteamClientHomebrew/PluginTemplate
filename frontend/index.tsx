@@ -1,65 +1,32 @@
-import { Millennium, IconsModule, definePlugin, Field, DialogButton, usePluginConfig } from '@steambrew/client';
-
-class SomeClass {
-	static method(country: string, age: number) {
-		console.log(`country: ${country}, age: ${age}`);
-		return 'method called';
-	}
-}
-
-// Declare a function that exists on the backend
-// const backendMethod = callable<[{ message: string; status: boolean; count: number }], boolean>('test_frontend_message_callback');
-// Declare a function that exists on the webkit
-// const webkitMethod = callable<[{ message: string; status: boolean; count: number }], string>('webkit:someWebkitMethod');
+import { IconsModule, definePlugin, Field } from 'millennium';
 
 const SettingsContent = () => {
-	// usePluginConfig subscribes to live config changes from both frontend and backend.
-	// When the Lua backend calls millennium.config.set("greeting", ...), this component re-renders automatically.
-	const [greeting, setGreeting] = usePluginConfig<string>('greeting');
-
-	return (
-		<>
-			<Field label="Greeting" description={greeting ?? 'Loading...'} icon={<IconsModule.Settings />} bottomSeparator="standard" focusable>
-				<DialogButton
-					onClick={() => {
-						const next = greeting === 'Hello from Lua!' ? 'Hello from Frontend!' : 'Hello from Lua!';
-						setGreeting(next);
-					}}
-				>
-					Toggle Greeting
-				</DialogButton>
-			</Field>
-			<Field label="Plugin Settings" description="This is a description of the plugin settings." icon={<IconsModule.Settings />} bottomSeparator="standard" focusable>
-				<DialogButton
-					onClick={() => {
-						console.log('Button clicked!');
-					}}
-				>
-					Click Me
-				</DialogButton>
-			</Field>
-		</>
-	);
+	return <Field label="Hello, World!" />;
 };
 
-function hookedSettingsIcon() {
-	return {
-		SteamButton: (): any => {
-			return <IconsModule.Caution height={'20px'} />;
-		},
-	};
+/** @ffi */
+export function subtract(a: number, b: number): { difference: number; a: number; b: number } {
+	console.log("Substracting", a, "from", b);
+	return { difference: a - b, a, b };
 }
 
-Millennium.exposeObj({ hookedSettingsIcon, SomeClass });
+/** @ffi */
+export const hookedSettingsIcon = {
+	SteamButton: () => <IconsModule.Caution height={'20px'} />
+}
+
+async function initializePlugin() {
+	console.log("Frontend initialized");
+
+	const sum = await backend.add(100, 100, 100);
+	console.log('add result:', sum);
+
+	console.warn('Example warning', { sum, threshold: 150 });
+	console.error('Example error', new Error('example error'));
+}
 
 export default definePlugin(() => {
-	// backendMethod({
-	// 	message: 'Hello World From Frontend!',
-	// 	status: true,
-	// 	count: 69,
-	// }).then((message: any) => {
-	// 	console.log('Result from backendMethod:', message);
-	// });
+	initializePlugin();
 
 	return {
 		title: 'My Plugin',
