@@ -14,16 +14,16 @@
     "allowSyntheticDefaultImports": true,
     "skipLibCheck": true,
     "resolveJsonModule": true,
-    "paths": {
-      "millennium": [
-        ".millennium/lsp/ts"
-      ]
-    },
     "baseUrl": ".",
     "typeRoots": [
       ".millennium/types",
       "node_modules/@types"
-    ]
+    ],
+    "paths": {
+      "millennium": [
+        ".millennium/lsp/ts"
+      ]
+    }
   },
   "include": [
     "**/*",

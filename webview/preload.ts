@@ -10,12 +10,6 @@
  * This includes @steamclienthomebrew/millennium as its only made for the Steam
  * Client, not external, insecure pages.
  */
-import { ffi } from 'millennium';
-
-interface SubtractionProps { difference: number; a: number; b: number };
-
-/* define a function on the plugin frontend */
-const subtract = ffi<[a: number, b: number], SubtractionProps>('frontend:subtract');
 
 /**
  * This function is called by Millennium once this script has been loaded.
@@ -24,11 +18,11 @@ const subtract = ffi<[a: number, b: number], SubtractionProps>('frontend:subtrac
  * The frontend and backend will be loaded.
  */
 export default async function main() {
-	console.log("Attached to:", window.location.href);
+  console.log("Attached to:", window.location.href);
 
-	const sum = await backend.add(100, 100, 100);
-	console.log('Result from add:', sum);
+  const sum = await backend.add(100, 100, 100);
+  console.log("Result from add:", sum);
 
-	const result = await subtract(200, 100);
-	console.log('Result from subtract:', result.difference);
+  const result = await frontend.subtract(200, 100);
+  console.log("Result from subtract:", result.difference);
 }

@@ -5,9 +5,9 @@ version = "1.0.0"
 author = "Millennium"
 description = "A template plugin for Millennium."
 
-# [assets]
+[assets]
 # reference resources to be included inside the plugin at compile time
-# resources=["assets/image.png"]
+resources=["resources/**/*"]
 
 # A simple script that returns a tuple [boolean: ok, string: error].
 # ok = plugin is usable on the current platform/environment
@@ -24,15 +24,20 @@ sources = ["backend/**/*.lua"]
 entry = "frontend/index.tsx"
 
 [frontend.globals]
-"@steambrew/client" = "window.MILLENNIUM_API"
-"react" = "SP_JSX_FACTORY"
-"react/jsx-runtime" = "SP_JSX_FACTORY"
+# Hook imports/refernces at compile time
+
+# ex:
+# "react" = "window.SOME_FAKE_REACT"
+
+# All imports to "react" get hooked and replaced with window.SOME_FAKE_REACT.
+# import { useEffect } from "react";
+# useEffect() -> window.SOME_FAKE_REACT.useEffect() at runtime
 
 [webkit]
 entry = "webview/preload.ts"
 
-[webkit.globals]
-"@steambrew/webkit" = "window.MILLENNIUM_API"
+# [webkit.globals]
+# same as frontend.globals
 
 [compiler]
 # output path
@@ -60,6 +65,11 @@ colors = true
 show_hidden = true
 
 [logger]
+padding = 0
+backend_prefix  = "BCK"
+frontend_prefix = "FRT"
+webview_prefix  = "WEB"
+
 # padding = -15                   # negative = right-align (pad left), positive = left-align (pad right), 0 = none
 # backend_prefix  = "BCK {file}"  # {file} expands to "filename:L{line}" when available
 # frontend_prefix = "FRT {file}"
