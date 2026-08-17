@@ -5,23 +5,14 @@
     "": {
       "name": "millennium-plugin",
       "devDependencies": {
-        "@steambrew/api": "link:@steambrew/api",
-        "@steambrew/client": "link:@steambrew/client",
-        "@steambrew/ttc": "link:@steambrew/ttc",
-        "@steambrew/webkit": "link:@steambrew/webkit",
+        "@steambrew/starlight": "^1.0.6",
         "@types/react": "19.1.1",
         "@types/react-dom": "19.1.1",
       },
     },
   },
   "packages": {
-    "@steambrew/api": ["@steambrew/api@link:@steambrew/api", {}],
-
-    "@steambrew/client": ["@steambrew/client@link:@steambrew/client", {}],
-
-    "@steambrew/ttc": ["@steambrew/ttc@link:@steambrew/ttc", { "bin": { "millennium-ttc": "dist/index.js" } }],
-
-    "@steambrew/webkit": ["@steambrew/webkit@link:@steambrew/webkit", {}],
+    "@steambrew/starlight": ["@steambrew/starlight@1.0.6", "", { "bin": { "starlight": "bin/starlight.js" } }, "sha512-d8ZWB/0ZVx78MG4UC4Rt0Ci/e9r/reAXffvGGEHIVzFJKvrlTNOS1mwiNGJZqeCEMu/4JIG2KnHe6hr1Pj8tGA=="],
 
     "@types/react": ["@types/react@19.1.1", "", { "dependencies": { "csstype": "^3.0.2" } }, "sha512-ePapxDL7qrgqSF67s0h9m412d9DbXyC1n59O2st+9rjuuamWsZuD2w55rqY12CbzsZ7uVXb5Nw0gEp9Z8MMutQ=="],
 

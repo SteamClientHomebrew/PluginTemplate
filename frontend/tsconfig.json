@@ -1,10 +1,10 @@
 {
-    "extends": "../tsconfig.json",
-    "include": [
-        "."
-    ],
-    "exclude": [
-        "node_modules",
-        "../webkit"
-    ]
+  "extends": "../tsconfig.json",
+  "include": [
+    "."
+  ],
+  "exclude": [
+    "node_modules",
+    "../webview"
+  ]
 }

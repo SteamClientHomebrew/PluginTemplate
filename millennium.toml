@@ -1,0 +1,84 @@
+[plugin]
+id = "com.example.boilerplate"
+name = "Boilerplate Plugin"
+version = "1.0.0"
+author = "Millennium"
+description = "A template plugin for Millennium."
+
+[assets]
+# reference resources to be included inside the plugin at compile time
+resources=["resources/**/*"]
+
+# THE BELOW IS NOT YET IMPLEMENTED IN MILLENNIUM
+# --------------------
+# A simple script that returns a tuple [boolean: ok, string: error].
+# ok = plugin is usable on the current platform/environment
+# error = the error message if !ok
+# ex: jit.os == "Windows"
+# [preload]
+# entry = "preload.lua"
+
+[backend]
+entry = "backend/main.lua"
+sources = ["backend/**/*.lua"]
+
+[frontend]
+entry = "frontend/index.tsx"
+
+[frontend.globals]
+# Hook imports/refernces at compile time
+
+# ex:
+# "react" = "window.SOME_FAKE_REACT"
+
+# All imports to "react" get hooked and replaced with window.SOME_FAKE_REACT.
+# import { useEffect } from "react";
+# useEffect() -> window.SOME_FAKE_REACT.useEffect() at runtime
+
+[webkit]
+entry = "webview/preload.ts"
+
+# [webkit.globals]
+# same as frontend.globals
+
+[compiler]
+# output path
+# auto = automatically detect Millennium installation and install plugin
+# any other path = used as the output path for the build
+output_path = "auto"
+
+[dev]
+# plugin_name = "com.example.boilerplate"     # defaults to [plugin].id
+# socket = "/tmp/millennium-mep.sock"         # defaults to platform MEP path
+
+# Restart the plugin backend on any source change (default: true).
+auto_restart = true
+
+# Reload Steam's UI frontend after a restart, depending on which files changed:
+#   "never"    = never reload the UI (default)
+#   "backend"  = reload when .lua files changed
+#   "frontend" = reload when .ts/.tsx/.js/.jsx/.css files changed
+#   "both"     = reload on any source change
+reload_steamui_when = "both"
+
+[inspect]
+depth = 4
+colors = true
+show_hidden = true
+
+[logger]
+padding = 0
+backend_prefix  = "BCK"
+frontend_prefix = "FRT"
+webview_prefix  = "WEB"
+
+# padding = -15                   # negative = right-align (pad left), positive = left-align (pad right), 0 = none
+# backend_prefix  = "BCK {file}"  # {file} expands to "filename:L{line}" when available
+# frontend_prefix = "FRT {file}"
+# webview_prefix  = "WEB {file}"
+# backend_col  = [160, 90, 180]
+# frontend_col = [90, 148, 200]
+# webview_col  = [65, 165, 160]
+
+[patches]
+debug = true # | false

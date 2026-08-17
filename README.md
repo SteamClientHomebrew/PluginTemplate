@@ -1,20 +1,11 @@
-## Plugin Template
+# Plugin Template
 
 A plugin template for Millennium providing a basic boilerplate to help get started.
 
 ## Prerequisites
 
-- **[Millennium](https://github.com/SteamClientHomebrew/Millennium)**
-
-## Setting up
-
-```bash
-# Clone the repository somewhere
-$ git clone https://github.com/SteamClientHomebrew/PluginTemplate
-
-# Enter the repository
-$ cd PluginTemplate
-```
+- **[Millennium](https://github.com/SteamClientHomebrew/Millennium)** >= v3.4.0
+- **[Bun](https://bun.com/)** >= v1.0.0
 
 ## Building
 
@@ -26,4 +17,4 @@ $ bun install
 $ bun run build
 ```
 
-Then ensure your plugin template is in your plugins folder. Millennium also accepts symbolic-linked plugins from external directories. 
+That's it! Millennium & starlight (plugin compiler) will automatically set up your plugin! You can enable it in Millennium Settings.
