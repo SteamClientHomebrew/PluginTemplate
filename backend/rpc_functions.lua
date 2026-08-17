@@ -1,4 +1,4 @@
-local logger = require("logger")
+local logger     = require("logger")
 local millennium = require("millennium")
 
 ---@ffi
@@ -8,7 +8,7 @@ local millennium = require("millennium")
 ---@param c number
 ---@return number
 function add(a, b, c)
-    logger:info(string.format("add(%d, %d, %d) called!", a, b, c))
+    logger:info(string.format("add(%d, %d, %d)", a, b, c))
     return a + b + c
 end
 

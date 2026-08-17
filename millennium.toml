@@ -9,12 +9,14 @@ description = "A template plugin for Millennium."
 # reference resources to be included inside the plugin at compile time
 resources=["resources/**/*"]
 
+# THE BELOW IS NOT YET IMPLEMENTED IN MILLENNIUM
+# --------------------
 # A simple script that returns a tuple [boolean: ok, string: error].
 # ok = plugin is usable on the current platform/environment
 # error = the error message if !ok
 # ex: jit.os == "Windows"
-[preload]
-entry = "preload.lua"
+# [preload]
+# entry = "preload.lua"
 
 [backend]
 entry = "backend/main.lua"
@@ -77,3 +79,6 @@ webview_prefix  = "WEB"
 # backend_col  = [160, 90, 180]
 # frontend_col = [90, 148, 200]
 # webview_col  = [65, 165, 160]
+
+[patches]
+debug = true # | false
