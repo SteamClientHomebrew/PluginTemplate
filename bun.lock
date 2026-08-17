@@ -5,14 +5,14 @@
     "": {
       "name": "millennium-plugin",
       "devDependencies": {
-        "@steambrew/starlight": "^1.0.6",
+        "@steambrew/starlight": "^1.1.1",
         "@types/react": "19.1.1",
         "@types/react-dom": "19.1.1",
       },
     },
   },
   "packages": {
-    "@steambrew/starlight": ["@steambrew/starlight@1.0.6", "", { "bin": { "starlight": "bin/starlight.js" } }, "sha512-d8ZWB/0ZVx78MG4UC4Rt0Ci/e9r/reAXffvGGEHIVzFJKvrlTNOS1mwiNGJZqeCEMu/4JIG2KnHe6hr1Pj8tGA=="],
+    "@steambrew/starlight": ["@steambrew/starlight@1.1.1", "", { "bin": { "starlight": "bin/starlight.js" } }, "sha512-qRcoOblJ0Vo0my483/sJmNi6rVHYaYtj9ZGe8DysOShY/8aLUkxenC/nq2TAWd0h5iyyX9KpaurJjhtY1itoLg=="],
 
     "@types/react": ["@types/react@19.1.1", "", { "dependencies": { "csstype": "^3.0.2" } }, "sha512-ePapxDL7qrgqSF67s0h9m412d9DbXyC1n59O2st+9rjuuamWsZuD2w55rqY12CbzsZ7uVXb5Nw0gEp9Z8MMutQ=="],
 
