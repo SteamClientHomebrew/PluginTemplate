@@ -43,6 +43,11 @@ async function initializePlugin() {
 	const sum = await backend.add(100, 100, 100);
 	console.log('add result:', sum);
 
+	const status = await backend.getPluginStatus();
+	console.log('plugin status:', status.version, status.tags.join(', '));
+
+	await backend.updatePreferences({ darkMode: true, refreshInterval: 30 });
+
 	console.warn('Example warning', { sum, threshold: 150 });
 	console.error('Example error', new Error('example error'));
 }
